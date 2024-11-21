@@ -9,7 +9,7 @@ This is the backend application for managing user data and authentication. It us
 
 ### **Core Features**
 1. **Create User Profile**
-   - Endpoint: `POST /api/create-user-data`
+   - Endpoint: `POST /api/users`
    - Creates a user profile in the Firestore database.
    - Required fields:
      - `id`: User ID.
@@ -17,16 +17,16 @@ This is the backend application for managing user data and authentication. It us
      - `email`: User's email address.
 
 2. **Fetch User Profile**
-   - Endpoint: `GET /api/fetch-user-data/:id`
+   - Endpoint: `GET /api/users`
    - Retrieves user profile data by user ID.
 
 3. **Update User Profile**
-   - Endpoint: `POST /api/update-user-data/:id`
+   - Endpoint: `PUT /api/users`
    - Updates specific fields of a user profile in Firestore.
    - Supports partial updates (merges with existing data).
 
 4. **Update User Password** (Optional Feature)
-   - Endpoint: `POST /api/update-password`
+   - Endpoint: `PUT /api/users/password`
    - Updates the user's password securely via Firebase.
    - Requires:
      - `userId`: Firebase User ID.
@@ -39,7 +39,7 @@ This is the backend application for managing user data and authentication. It us
 ### **1. Prerequisites**
 
 Ensure the following are installed on your system:
-- **Node.js** (v16 or later)
+- **Node.js** (v22 or later)
 - **pnpm** (v8 or later)
 - **Firebase CLI** (for local emulators, optional)
 
@@ -68,8 +68,8 @@ pnpm install
 Create a `.env` file in the root directory with the following content:
 
 ```env
-FIREBASE_SERVICE_ACCOUNT_PATH=./serviceAccountKey.json
-PORT=3000
+SERVICE_ACCOUNT_PATH=./path/to/serviceAccount.json
+APP_PORT=3000
 ```
 
 ### **6. Run the Application**
